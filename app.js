@@ -63,9 +63,23 @@ return inquirer.prompt([
         }
     },
     {
+        type: "confirm",
+        name: "confirmAbout",
+        message: 'Would you like to enter some info about yourself for an "About" section?',
+        default: true
+    },
+    {
         type: "input",
         name: "about",
-        message: "Provide some information about yourself:"
+        message: "Provide some information about yourself:",
+        //IF YOU ANSWER NO FOR THE PREVIOUS SECTION THIS WILL NOT BE ASKED
+        when: ({confirmAbout}) => {
+            if(confirmAbout) {
+                return true;
+            }else{
+                return false;
+            }
+        }
     }
 
 ]);
