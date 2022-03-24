@@ -21,8 +21,8 @@ printProfileData(profileDataArgs);*/
 //KEEP EVERYTHING BELOW THIS LINE
 
 const inquirer = require("inquirer");
-//const FileSystem = require("fs");
-//const generatePage = require('./src/page-template.js');
+const FileSystem = require("fs");
+const generatePage = require('./src/page-template.js');
 //const [name, github] = profileDataArgs;
 
 
@@ -155,7 +155,7 @@ const promptProject = portfolioData =>{
         {
             type: "confirm",
             name: "confirmAddProject",
-            message: "Would you like to enter antoher project?",
+            message: "Would you like to enter another project?",
             default: false
         }
     ])
@@ -173,9 +173,16 @@ const promptProject = portfolioData =>{
 
 promptUser()
 .then(promptProject)
-.then(portfolioData =>{
-    console.log(portfolioData);
+.then(portfolioData => {
+    const pageHTML = generatePage(portfolioData);
+    
+    // fs.writeFile('.index.html', pageHTML, err => {
+    //     if(err) throw new (err);
+
+    //     console.log("Page Created! Check out index.html in this directory to see it!");
+    // });
 });
+
 //.then(answers => console.log(answers))
 //.then(promptProject)
 //.then(projectAnswers => console.log(projectAnswers));
