@@ -21,11 +21,9 @@ printProfileData(profileDataArgs);*/
 //KEEP EVERYTHING BELOW THIS LINE
 
 const inquirer = require("inquirer");
-const FileSystem = require("fs");
+const fs = require("fs");
 const generatePage = require('./src/page-template.js');
 //const [name, github] = profileDataArgs;
-
-
 
 /*FileSystem.writeFile("index.html", generatePage(name, github), err => {
     if (err) throw err;
@@ -176,11 +174,11 @@ promptUser()
 .then(portfolioData => {
     const pageHTML = generatePage(portfolioData);
     
-    // fs.writeFile('.index.html', pageHTML, err => {
-    //     if(err) throw new (err);
+    fs.writeFile('.index.html', pageHTML, err => {
+         if(err) throw new (err);
 
-    //     console.log("Page Created! Check out index.html in this directory to see it!");
-    // });
+         console.log("Page Created! Check out index.html in this directory to see it!");
+    });
 });
 
 //.then(answers => console.log(answers))
